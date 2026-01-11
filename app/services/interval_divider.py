@@ -1,0 +1,129 @@
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+
+import pandas as pd
+
+class IntervalDivider:
+    """
+    A class to divide the range of each column in a dataset into equal intervals and map samples to these intervals.
+
+    Attributes:
+        data (pd.DataFrame): The dataset to be processed.
+        divider (int): The number of intervals to divide each column's range into.
+        intervals (dict): A dictionary with column names as keys and lists of interval ranges as values.
+        grid_map (dict): A dictionary with grid IDs as keys and lists of sample indices as values.
+    """
+
+    def __init__(self, file_path, divider):
+        """
+        Initializes the IntervalDivider with a dataset and a divider value.
+
+        Args:
+            file_path (str): The path of cleaned data.
+            divider (int): The number of intervals to divide each column's range into.
+        """
+        try:
+            self.data = pd.read_excel(file_path)
+        except FileNotFoundError as e:
+            raise FileNotFoundError(f"File not found at the provided path: {file_path}") from e
+        except Exception as e:
+            raise Exception(f"An error occurred while reading the Excel file: {e}") from e
+        
+        self.divider = divider
+        self.intervals = self.get_intervals()
+        self.grid_map = self.map_samples_to_grids()
+
+    def get_intervals(self):
+        """
+        Calculates the intervals for each column in the dataset, excluding the last column (assumed to be the target/label column).
+
+        Returns:
+            dict: A dictionary with column names as keys and lists of interval ranges as values.
+        """
+        intervals = {}
+        for column in self.data.columns[:-1]:  # Exclude the last column (assumed to be a label or non-numeric)
+            min_val = self.data[column].min()
+            max_val = self.data[column].max()
+
+            # Avoid division by zero
+            if max_val == min_val:
+                raise ValueError(f"Column '{column}' has identical min and max values. Division into intervals is not possible.")
+
+            interval_range = (max_val - min_val) / self.divider
+            column_intervals = [
+                [round(min_val + i * interval_range, 4), round(min_val + (i + 1) * interval_range, 4)] for i in range(self.divider)
+            ]
+            
+            # Adjust the last interval to include the upper bound of the column's max value
+            column_intervals[-1][1] = max_val
+            intervals[column] = column_intervals
+        
+        return intervals
+
+    def map_samples_to_grids(self):
+        """
+        Maps each sample in the dataset to a grid based on its attribute values by comparing them against the calculated intervals.
+
+        Returns:
+            dict: A dictionary with grid IDs (tuples of interval indices) as keys and lists of sample indices as values.
+        """
+        grid_map = {}
+        for index, row in self.data.iterrows():
+            grid_id = self.get_grid_id(row)
+            grid_map.setdefault(grid_id, []).append(index)
+        return grid_map
+
+    def get_grid_id(self, row):
+        """
+        Generates a grid ID for a given sample based on its attribute values.
+
+        Args:
+            row (pd.Series): A row of the dataset representing a sample.
+
+        Returns:
+            tuple: A tuple of interval indices representing the grid ID.
+        """
+        grid_id = []
+        for column in self.data.columns[:-1]:  # Exclude the last column
+            value = row[column]
+            interval_index = self.find_interval_index(self.intervals[column], value)
+            grid_id.append(interval_index)
+        return tuple(grid_id)
+
+    def find_interval_index(self, intervals, value):
+        """
+        Finds the index of the interval that a given value falls into.
+
+        Args:
+            intervals (list of list): A list of intervals represented as [start, end] lists.
+            value (float): The value to be located in the intervals.
+
+        Returns:
+            int: The index of the interval that contains the value.
+
+        Raises:
+            ValueError: If the value is not found within any interval.
+        """
+        for index, (start, end) in enumerate(intervals):
+            # For the last interval, include the upper bound
+            if index == len(intervals) - 1 and start <= value <= end:
+                return index
+            # For all other intervals, the upper bound is not included
+            elif start <= value < end:
+                return index
+        raise ValueError(f"Value {value} not found in intervals.")
+
+
+if __name__ == "__main__":
+    file_path = os.path.join(os.path.dirname(__file__), 'data_clean.xlsx')
+    divider = 2
+    interval_divider = IntervalDivider(file_path, divider)
+
+    grid_map = interval_divider.grid_map
+    for grid_id, sample_ids in grid_map.items():
+        print(f"Grid ID: {grid_id} -> Sample Indices: {sample_ids}")
+
+    print("Column Intervals:")
+    for column, intervals in interval_divider.intervals.items():
+        print(f"{column}: {intervals}")
