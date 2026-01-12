@@ -1,147 +1,65 @@
-# =========================
-# OS / Editor
-# =========================
-.DS_Store
-Thumbs.db
-desktop.ini
-
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# =========================
-# Python / Virtualenv
-# =========================
+############################
+# Python
+############################
 __pycache__/
-*.py[cod]
-*$py.class
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
 
+############################
+# Virtual Environments
+############################
 .venv/
 venv/
 env/
-ENV/
-pip-wheel-metadata/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.coverage
-coverage.xml
-htmlcov/
-.cache/
 
-# =========================
-# Jupyter
-# =========================
-.ipynb_checkpoints/
+############################
+# IDE / Editor
+############################
+.vscode/
+.idea/
 
-# =========================
-# Build / Packaging
-# =========================
-build/
-dist/
-*.egg-info/
-.eggs/
-wheelhouse/
+############################
+# OS
+############################
+.DS_Store
+Thumbs.db
 
-# =========================
-# Logs
-# =========================
+############################
+# Environment / Secrets
+############################
+.env
+
+############################
+# Logs & Runtime Artifacts
+############################
 *.log
 logs/
-log/
 
-# =========================
-# Secrets / Local Config
-# =========================
-.env
-.env.*
-*.env
+############################
+# Docker
+############################
+*.pid
 
-# If you have local-only config overrides
-config.local.py
-local_settings.py
+############################
+# Data policy
+############################
+# Ignore raw / original datasets only
+data/raw/
 
-# =========================
-# Data (Large / Local)
-# Keep small sample datasets if needed (commit those explicitly)
-# =========================
-data/
-dataset/
-datasets/
-raw_data/
-tmp/
-temp/
-output/
-outputs/
-artifacts/
-reports/
-
-# Excel/CSV artifacts produced during experiments (usually large / iterative)
-*.xlsx
-*.xls
-*.csv
-
-# If you DO want to keep specific Excel files (like your init dataset),
-# add negations below (uncomment and adjust):
-#!Dataset - FABS (init).xlsx
-#!data_clean.xlsx
-#!data_clean_2.xlsx
-#!data_clean_3.xlsx
-
-# =========================
-# Model Artifacts (Large binaries)
-# =========================
-*.pkl
-*.joblib
-*.h5
-*.pt
-*.pth
-*.onnx
-*.tflite
-
-# XGBoost / LightGBM / catboost saved models
-*.json
-*.bst
-*.bin
-*.cbm
-*.txt
-
-# If you DO want to commit only specific model files, negate them like:
-#!models/RF_model_for_stroke_prediction.pkl
-#!models/XGB_model_for_stroke_prediction.json
-#!models/ML_model_for_stroke_prediction.h5
-
-# Also ignore training output dirs that may contain many variants
-featureset_multimodels/trained_models/
-featureset_multimodels/**/trained_models/
+############################
+# Training-only artifacts
+############################
 checkpoints/
-ckpt/
 runs/
 wandb/
 
-# =========================
-# Docker
-# =========================
-*.tar
-*.tar.gz
-
-# =========================
-# Azure / Misc
-# =========================
-.azure/
-*.publishsettings
-
-# =========================
-# Node / Frontend (if any)
-# =========================
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# =========================
-# Mac/Linux
-# =========================
-*.pid
-*.sock
+############################
+# Explicitly KEEP (do NOT ignore)
+############################
+# requirements.txt
+# models/
+# data/processed/
+# app/
+# processing/
