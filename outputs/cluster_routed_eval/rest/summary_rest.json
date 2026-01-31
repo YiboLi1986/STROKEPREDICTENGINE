@@ -1,0 +1,86 @@
+{
+  "cohort": "rest",
+  "train_size": 409,
+  "test_size": 103,
+  "test_counts": {
+    "N_total": 103,
+    "N_stroke(positive)": 81,
+    "N_nonstroke(negative)": 22
+  },
+  "decision_threshold": 0.5,
+  "rf": {
+    "scores_csv": "outputs/cluster_routed_eval\\rest\\scores_rest_rf.csv",
+    "roc_png": "outputs/cluster_routed_eval\\rest\\roc_rest_rf.png",
+    "metrics": {
+      "threshold": 0.5,
+      "counts": {
+        "N_total": 103,
+        "N_stroke(positive)": 81,
+        "N_nonstroke(negative)": 22
+      },
+      "confusion": {
+        "tn": 7,
+        "fp": 15,
+        "fn": 4,
+        "tp": 77
+      },
+      "accuracy": 0.8155339805825242,
+      "precision": 0.8369565217391305,
+      "recall": 0.9506172839506173,
+      "f1": 0.8901734104046243,
+      "sensitivity": 0.9506172839506173,
+      "specificity": 0.3181818181818182,
+      "roc_auc": 0.7533670033670034
+    }
+  },
+  "xgb": {
+    "scores_csv": "outputs/cluster_routed_eval\\rest\\scores_rest_xgb.csv",
+    "roc_png": "outputs/cluster_routed_eval\\rest\\roc_rest_xgb.png",
+    "metrics": {
+      "threshold": 0.5,
+      "counts": {
+        "N_total": 103,
+        "N_stroke(positive)": 81,
+        "N_nonstroke(negative)": 22
+      },
+      "confusion": {
+        "tn": 7,
+        "fp": 15,
+        "fn": 9,
+        "tp": 72
+      },
+      "accuracy": 0.7669902912621359,
+      "precision": 0.8275862068965517,
+      "recall": 0.8888888888888888,
+      "f1": 0.8571428571428571,
+      "sensitivity": 0.8888888888888888,
+      "specificity": 0.3181818181818182,
+      "roc_auc": 0.6958473625140291
+    }
+  },
+  "nn": {
+    "scores_csv": "outputs/cluster_routed_eval\\rest\\scores_rest_nn.csv",
+    "roc_png": "outputs/cluster_routed_eval\\rest\\roc_rest_nn.png",
+    "metrics": {
+      "threshold": 0.5,
+      "counts": {
+        "N_total": 103,
+        "N_stroke(positive)": 81,
+        "N_nonstroke(negative)": 22
+      },
+      "confusion": {
+        "tn": 3,
+        "fp": 19,
+        "fn": 5,
+        "tp": 76
+      },
+      "accuracy": 0.7669902912621359,
+      "precision": 0.8,
+      "recall": 0.9382716049382716,
+      "f1": 0.8636363636363636,
+      "sensitivity": 0.9382716049382716,
+      "specificity": 0.13636363636363635,
+      "roc_auc": 0.7519640852974185
+    }
+  }
+}

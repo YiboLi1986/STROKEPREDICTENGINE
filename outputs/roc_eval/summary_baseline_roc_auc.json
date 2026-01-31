@@ -1,0 +1,45 @@
+{
+  "file_path": "app/services/data/data_clean.xlsx",
+  "label_col": "Output",
+  "feature_cols": [
+    "age",
+    "race",
+    "sex",
+    "HTN",
+    "DM",
+    "HLD",
+    "Smoking",
+    "HxOfStroke",
+    "HxOfAfib",
+    "HxOfPsychIllness",
+    "HxOfESRD",
+    "HxOfSeizure",
+    "SBP",
+    "DBP",
+    "BloodSugar",
+    "NIHSS",
+    "FacialDroop (weakness)"
+  ],
+  "test_counts": {
+    "N_total": 159,
+    "N_stroke(positive)": 113,
+    "N_nonstroke(negative)": 46
+  },
+  "test_split": {
+    "test_size": 0.2,
+    "random_state": 42,
+    "stratify": true
+  },
+  "baseline_rf": {
+    "auc": 0.8650442477876106,
+    "roc_png": "outputs/roc_eval\\roc_baseline_rf.png"
+  },
+  "baseline_xgb": {
+    "auc": 0.8672566371681415,
+    "roc_png": "outputs/roc_eval\\roc_baseline_xgb.png"
+  },
+  "baseline_nn": {
+    "auc": 0.8416698730280876,
+    "roc_png": "outputs/roc_eval\\roc_baseline_nn.png"
+  }
+}

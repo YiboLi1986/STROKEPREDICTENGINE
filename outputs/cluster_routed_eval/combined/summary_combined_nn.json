@@ -1,0 +1,26 @@
+{
+  "name": "combined_nn",
+  "scores_csv": "outputs/cluster_routed_eval\\combined\\scores_combined_nn.csv",
+  "roc_png": "outputs/cluster_routed_eval\\combined\\roc_combined_nn.png",
+  "metrics": {
+    "threshold": 0.5,
+    "counts": {
+      "N_total": 159,
+      "N_stroke(positive)": 113,
+      "N_nonstroke(negative)": 46
+    },
+    "confusion": {
+      "tn": 24,
+      "fp": 22,
+      "fn": 7,
+      "tp": 106
+    },
+    "accuracy": 0.8176100628930818,
+    "precision": 0.828125,
+    "recall": 0.9380530973451328,
+    "f1": 0.8796680497925311,
+    "sensitivity": 0.9380530973451328,
+    "specificity": 0.5217391304347826,
+    "roc_auc": 0.8645632935744517
+  }
+}
