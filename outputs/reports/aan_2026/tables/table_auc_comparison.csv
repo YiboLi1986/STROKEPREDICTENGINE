@@ -1,0 +1,4 @@
+Model,Strategy,AUC
+Random Forest,Baseline,0.8650442477876106
+Random Forest,Cohort-Routed,0.8942862639476722
+Random Forest,Δ (Routed - Baseline),0.029242016160061612

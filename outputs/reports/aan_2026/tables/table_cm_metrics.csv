@@ -1,0 +1,4 @@
+Strategy,threshold,tn,fp,fn,tp,sensitivity,specificity,precision,accuracy,delta_tn,delta_fp,delta_fn,delta_tp,note
+Baseline,0.5,30.0,16.0,8.0,105.0,0.9292035398230089,0.6521739130434783,0.8677685950413223,0.8490566037735849,,,,,
+Cohort-Routed,0.5,29.0,17.0,4.0,109.0,0.9646017699115044,0.6304347826086957,0.8650793650793651,0.8679245283018868,,,,,
+Δ (Routed - Baseline),,,,,,,,,,-1.0,1.0,-4.0,4.0,Negative delta_fn means fewer missed strokes (false negatives).

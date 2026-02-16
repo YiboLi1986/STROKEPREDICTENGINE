@@ -1,0 +1,55 @@
+{
+  "inputs": {
+    "baseline_scores_csv": "outputs/roc_eval/scores_baseline_rf.csv",
+    "routed_scores_csv": "outputs/cluster_routed_eval/combined/scores_combined_rf.csv"
+  },
+  "test_counts": {
+    "N_total": 159,
+    "N_stroke": 113,
+    "N_no_stroke": 46
+  },
+  "roc_auc": {
+    "baseline": 0.8650442477876106,
+    "routed": 0.8942862639476722,
+    "delta": 0.029242016160061612
+  },
+  "decision_threshold": 0.5,
+  "confusion_matrix": {
+    "baseline": {
+      "threshold": 0.5,
+      "tn": 30,
+      "fp": 16,
+      "fn": 8,
+      "tp": 105,
+      "sensitivity": 0.9292035398230089,
+      "specificity": 0.6521739130434783,
+      "precision": 0.8677685950413223,
+      "accuracy": 0.8490566037735849
+    },
+    "routed": {
+      "threshold": 0.5,
+      "tn": 29,
+      "fp": 17,
+      "fn": 4,
+      "tp": 109,
+      "sensitivity": 0.9646017699115044,
+      "specificity": 0.6304347826086957,
+      "precision": 0.8650793650793651,
+      "accuracy": 0.8679245283018868
+    }
+  },
+  "clinical_tradeoff": {
+    "delta_tn": -1,
+    "delta_fp": 1,
+    "delta_fn": -4,
+    "delta_tp": 4,
+    "note": "Negative delta_fn means fewer missed strokes (false negatives)."
+  },
+  "outputs": {
+    "report_dir": "outputs/reports\\aan_2026",
+    "figure_roc": "outputs/reports\\aan_2026\\figures\\fig2_roc_rf_baseline_vs_routed.png",
+    "figure_confusion": "outputs/reports\\aan_2026\\figures\\fig3_cm_rf_baseline_vs_routed.png",
+    "table_auc": "outputs/reports\\aan_2026\\tables\\table_auc_comparison.csv",
+    "table_confusion_metrics": "outputs/reports\\aan_2026\\tables\\table_cm_metrics.csv"
+  }
+}
