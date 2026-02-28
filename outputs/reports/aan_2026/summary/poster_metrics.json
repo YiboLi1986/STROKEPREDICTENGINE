@@ -47,8 +47,12 @@
   },
   "outputs": {
     "report_dir": "outputs/reports\\aan_2026",
-    "figure_roc": "outputs/reports\\aan_2026\\figures\\fig2_roc_rf_baseline_vs_routed.png",
-    "figure_confusion": "outputs/reports\\aan_2026\\figures\\fig3_cm_rf_baseline_vs_routed.png",
+    "figure_roc_png": "outputs/reports\\aan_2026\\figures\\fig2_roc_rf_baseline_vs_routed.png",
+    "figure_roc_svg": "outputs/reports\\aan_2026\\figures\\fig2_roc_rf_baseline_vs_routed.svg",
+    "figure_roc_pdf": "outputs/reports\\aan_2026\\figures\\fig2_roc_rf_baseline_vs_routed.pdf",
+    "figure_confusion_png": "outputs/reports\\aan_2026\\figures\\fig3_cm_rf_baseline_vs_routed.png",
+    "figure_confusion_svg": "outputs/reports\\aan_2026\\figures\\fig3_cm_rf_baseline_vs_routed.svg",
+    "figure_confusion_pdf": "outputs/reports\\aan_2026\\figures\\fig3_cm_rf_baseline_vs_routed.pdf",
     "table_auc": "outputs/reports\\aan_2026\\tables\\table_auc_comparison.csv",
     "table_confusion_metrics": "outputs/reports\\aan_2026\\tables\\table_cm_metrics.csv"
   }
